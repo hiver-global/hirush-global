@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hirush Global LLP - Launching Soon</title>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+      * {
+          margin: 0;
+          padding: 0;
+          box-sizing: border-box;
+      }
+
+      body {
+          font-family: 'Poppins', sans-serif;
+          background: radial-gradient(circle, #4a00e0, #8e2de2);
+          color: #ffffff;
+          min-height: 100vh;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          text-align: center;
+          padding: 2rem;
+      }
+
+      .container {
+          max-width: 800px;
+          margin: 0 auto;
+      }
+
+      .logo {
+          width: 150px;
+          height: 150px;
+          background-color: #ffffff;
+          border-radius: 50%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          font-size: 2rem;
+          font-weight: bold;
+          color: #4a00e0;
+          margin-bottom: 2rem;
+          transition: transform 0.3s ease;
+      }
+
+      .logo:hover {
+          transform: scale(1.1);
+      }
+
+      h1 {
+          font-size: 3rem;
+          margin-bottom: 1rem;
+          text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+      }
+
+      p {
+          font-size: 1.2rem;
+          margin-bottom: 2rem;
+          max-width: 600px;
+      }
+
+      .countdown {
+          display: flex;
+          justify-content: center;
+          gap: 1rem;
+          margin-bottom: 2rem;
+      }
+
+      .countdown-item {
+          background-color: rgba(255, 255, 255, 0.1);
+          padding: 1rem;
+          border-radius: 10px;
+          min-width: 100px;
+      }
+
+      .countdown-number {
+          font-size: 2.5rem;
+          font-weight: bold;
+      }
+
+      .countdown-label {
+          font-size: 0.9rem;
+          text-transform: uppercase;
+      }
+
+      .cta-button {
+          background-color: #ffffff;
+          color: #4a00e0;
+          font-size: 1.2rem;
+          font-weight: bold;
+          text-decoration: none;
+          padding: 1rem 2rem;
+          border-radius: 50px;
+          transition: all 0.3s ease;
+      }
+
+      .cta-button:hover {
+          background-color: #4a00e0;
+          color: #ffffff;
+          box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+      }
+
+      @media (max-width: 600px) {
+          h1 {
+              font-size: 2rem;
+          }
+
+          p {
+              font-size: 1rem;
+          }
+
+          .countdown {
+              flex-wrap: wrap;
+          }
+
+          .countdown-item {
+              min-width: 80px;
+          }
+
+          .countdown-number {
+              font-size: 2rem;
+          }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="logo">HG</div>
+      <h1>Hirush Global LLP</h1>
+      <p>We're working hard to bring you something amazing. Stay tuned for our big launch!</p>
+      <div class="countdown">
+        <div class="countdown-item">
+          <div class="countdown-number" id="days">00</div>
+          <div class="countdown-label">Days</div>
+        </div>
+        <div class="countdown-item">
+          <div class="countdown-number" id="hours">00</div>
+          <div class="countdown-label">Hours</div>
+        </div>
+        <div class="countdown-item">
+          <div class="countdown-number" id="minutes">00</div>
+          <div class="countdown-label">Minutes</div>
+        </div>
+        <div class="countdown-item">
+          <div class="countdown-number" id="seconds">00</div>
+          <div class="countdown-label">Seconds</div>
+        </div>
+      </div>
+      <a href="#" class="cta-button">Notify Me</a>
+    </div>
+
+    <script>
+      // Set the launch date (replace with your actual launch date)
+      const launchDate = new Date("2025-03-31T00:00:00").getTime();
+
+      // Update the countdown every second
+      const countdown = setInterval(function() {
+          const now = new Date().getTime();
+          const distance = launchDate - now;
+
+          const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+          const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+          const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+          const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+          document.getElementById("days").innerHTML = days.toString().padStart(2, '0');
+          document.getElementById("hours").innerHTML = hours.toString().padStart(2, '0');
+          document.getElementById("minutes").innerHTML = minutes.toString().padStart(2, '0');
+          document.getElementById("seconds").innerHTML = seconds.toString().padStart(2, '0');
+
+          if (distance < 0) {
+              clearInterval(countdown);
+              document.querySelector(".countdown").innerHTML = "We've launched!";
+          }
+      }, 1000);
+    </script>
+  </body>
+</html>
